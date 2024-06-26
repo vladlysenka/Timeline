@@ -11,6 +11,7 @@ struct Parallax: View {
             let minY = geometry.frame(in: .global).minY
             let size = geometry.size
             let parallax = minY > 0 ? minY : 0
+            
             Image(symbol.image)
                 .resizable()
                 .aspectRatio(contentMode: .fill)
@@ -19,10 +20,6 @@ struct Parallax: View {
                 .mask(LinearGradient(gradient: Gradient(colors: [.black, .clear]), startPoint: .center, endPoint: .bottom))
                 .overlay(alignment: .bottomLeading) {
                     HStack(spacing: 15) {
-                        Image(systemName: symbol.rawValue)
-                            .font(.system(size: 25, weight: .bold, design: .rounded))
-                            .foregroundStyle(symbol.color.gradient)
-                        
                         Text(symbol.title)
                             .font(.system(size: 35, weight: .bold, design: .rounded))
                         
@@ -67,7 +64,7 @@ struct Parallax: View {
                     .frame(maxWidth: .infinity, alignment: .center)
                     .padding(.bottom, 30)
                 HStack(spacing: 30) {
-                    LinkRow(symbol: .email)
+                    LinkRow(link: "mailto:vlad.lysenka@icloud.com", symbol: "envelope.fill")
                     
                     Image(.myfoto)
                         .resizable()
@@ -76,7 +73,7 @@ struct Parallax: View {
                         .clipShape(.circle)
                         .frame(maxWidth: .infinity, alignment: .center)
                     
-                    LinkRow(symbol: .telegram)
+                    LinkRow(link: "https://t.me/vladlysenka", symbol: "paperplane")
                 }
                 .padding(.horizontal)
             }
@@ -86,9 +83,9 @@ struct Parallax: View {
         }
     }
     
-    @ViewBuilder func LinkRow(symbol: Symbol) -> some View {
-        Link(destination: symbol.link) {
-            Image(systemName: symbol.rawValue)
+    @ViewBuilder func LinkRow(link: String, symbol: String) -> some View {
+        Link(destination: URL(string: link)!) {
+            Image(systemName: symbol)
                 .font(.system(size: 16, weight: .semibold))
                 .foregroundStyle(.blue.gradient)
                 .frame(width: 45, height: 45)

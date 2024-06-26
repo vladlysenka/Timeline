@@ -33,6 +33,9 @@ struct Jokes: View {
                     store.deleteJoke(at: indexSet)
                 }
                 .listRowSeparator(.hidden)
+            } else {
+                ContentUnavailableView("Список пуст", systemImage: Symbol.joke.rawValue)
+                    .listRowSeparator(.hidden)
             }
         }
         .listStyle(.plain)

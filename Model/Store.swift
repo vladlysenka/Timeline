@@ -9,7 +9,6 @@ import Observation
     var value = "0"
     var num: Double = 0.0
     var operation: Operation = .none
-    
     let buttons: [[Buttons]] = [
         [.clear, .negative, .percent, .divide],
         [.seven, .eight, .nine, .multiple],
@@ -18,6 +17,22 @@ import Observation
         [.zero, .decimal, .equal]
     ]
     
+    
+    // MARK: - Joke
+    var text = ""
+    var jokes: [String] = []
+    var isJokeExists: Bool = false
+    var isDownloading: Bool = false
+    private var cancellables = Set<AnyCancellable>()
+    
+    init() {
+        load()
+    }
+}
+
+
+// MARK: - Calculator
+extension Store {
     // MARK: Operation Enum
     enum Operation {
         case addition, subtract, multiply, divide, negative, percent, decimal, none
@@ -136,20 +151,10 @@ import Observation
         
         return (screenWidth - totalSpacing) / totalColumns
     }
-    
-    
-    // MARK: - Joke
-    var text = ""
-    var jokes: [String] = []
-    var isJokeExists: Bool = false
-    var isDownloading: Bool = false
-    
-    private var cancellables = Set<AnyCancellable>()
-    
-    init() {
-        load()
-    }
-    
+}
+
+// MARK: - Joke
+extension Store {
     func downloadRandomJoke() {
         guard let url = URL(string: "https://api.chucknorris.io/jokes/random") else { return }
         
@@ -206,4 +211,3 @@ import Observation
         let value: String
     }
 }
-

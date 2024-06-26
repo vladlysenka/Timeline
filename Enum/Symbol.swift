@@ -5,8 +5,6 @@ import SwiftUI
 enum Symbol: String {
     // MARK: Timeline
     case timeline   = "list.bullet.clipboard"
-    case email      = "envelope.fill"
-    case telegram   = "paperplane"
     // MARK: Network
     case network    = "globe.europe.africa"
     case joke       = "message.and.waveform"
@@ -30,9 +28,9 @@ enum Symbol: String {
     var summary: String {
         switch self {
         // MARK: Network
-        case .joke       : "Случайные шутки от Чака Норриса - это генератор случайных шуток, который работает с сетью для получения данных."
+        case .joke       : "Генератор случайных шуток от Чака Норриса, который работает с сетью для получения данных."
         // MARK: Miniapp
-        case .calculator : "Summary"
+        case .calculator : "Классический калькулятор apple"
         default          : ""
         }
     }
@@ -50,23 +48,12 @@ enum Symbol: String {
     
     var color: Color {
         switch self {
-        case .timeline : .orange
-        default        : .blue
-        }
-    }
-    
-    var back: Bool {
-        switch self {
-        case .timeline : false
-        default        : true
-        }
-    }
-    
-    var link: URL {
-        switch self {
-        case .email    : URL(string: "mailto:vlad.lysenka@icloud.com")!
-        case .telegram : URL(string: "https://t.me/vladlysenka")!
-        default        : URL(string: "https://t.me/vladlysenka")!
+        case .timeline   : .orange
+        // MARK: Network
+        case .joke       : .green
+        // MARK: Miniapp
+        case .calculator : .orange
+        default          : .blue
         }
     }
     
@@ -78,6 +65,13 @@ enum Symbol: String {
         // MARK: Miniapp
         case .miniapp : .miniapp
         default       : .parallax
+        }
+    }
+    
+    var back: Bool {
+        switch self {
+        case .timeline : false
+        default        : true
         }
     }
 }

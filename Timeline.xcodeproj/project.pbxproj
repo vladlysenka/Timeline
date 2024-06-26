@@ -59,9 +59,9 @@
 			children = (
 				F58E28262C0E711100FACC1A /* TimelineApp.swift */,
 				F58E283A2C0E719A00FACC1A /* View */,
+				F58E28342C0E719A00FACC1A /* Model */,
 				F58E28382C0E719A00FACC1A /* Enum */,
 				F58E28362C0E719A00FACC1A /* Extension */,
-				F58E28342C0E719A00FACC1A /* Model */,
 				F58E283F2C0E71E700FACC1A /* Assets */,
 				F58E28242C0E711100FACC1A /* Products */,
 			);
@@ -107,8 +107,8 @@
 			children = (
 				F5BA4B1D2C2ACA5800FEA041 /* Timelines.swift */,
 				F5BA4B1B2C2AAC0D00FEA041 /* Parallax.swift */,
-				F5C92A8B2C2B095100F556DA /* Miniapps */,
 				F5C92A8A2C2B086F00F556DA /* Networks */,
+				F5C92A8B2C2B095100F556DA /* Miniapps */,
 			);
 			path = View;
 			sourceTree = "<group>";

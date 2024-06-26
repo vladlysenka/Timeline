@@ -3,7 +3,7 @@
 import SwiftUI
 
 struct Miniapps: View {
-    let columns = Array(repeating: GridItem(.flexible(), spacing: 10), count: 2)
+    let columns = Array(repeating: GridItem(.flexible(), spacing: 10), count: 1)
     var body: some View {
             ScrollView {
                 Parallax(symbol: .miniapp)
@@ -38,13 +38,13 @@ struct Miniapps: View {
                 }
                 
                 Text(miniapp.symbol.summary)
-                    .font(.system(size: 12, weight: .semibold, design: .rounded))
+                    .font(.system(size: 13, weight: .semibold, design: .rounded))
                     .foregroundStyle(.position)
                     .multilineTextAlignment(.leading)
             }
             .padding(10)
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
-            .background(.orange.opacity(0.2), in: .rect(cornerRadius: 16))
+            .background(miniapp.symbol.color.opacity(0.2), in: .rect(cornerRadius: 16))
         }
     }
 }
