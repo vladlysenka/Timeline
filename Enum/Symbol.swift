@@ -45,6 +45,7 @@ enum Symbol: String {
         case .joke       : Jokes()
         // MARK: Miniapp
         case .calculator : Calculator()
+        case .tictactoe  : TicTacToe()
         default          : Text("text")
         }
     }
