@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F57230D02C3D53630009C512 /* ScrollCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57230CF2C3D53630009C512 /* ScrollCard.swift */; };
+		F57230D22C3D54F30009C512 /* Dismiss.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57230D12C3D54F30009C512 /* Dismiss.swift */; };
+		F57230D42C3D567F0009C512 /* TicTacToe.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57230D32C3D567E0009C512 /* TicTacToe.swift */; };
 		F58E28272C0E711100FACC1A /* TimelineApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58E28262C0E711100FACC1A /* TimelineApp.swift */; };
 		F58E282B2C0E711200FACC1A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F58E282A2C0E711200FACC1A /* Assets.xcassets */; };
 		F58E282E2C0E711200FACC1A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F58E282D2C0E711200FACC1A /* Preview Assets.xcassets */; };
@@ -25,6 +28,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F57230CF2C3D53630009C512 /* ScrollCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollCard.swift; sourceTree = "<group>"; };
+		F57230D12C3D54F30009C512 /* Dismiss.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dismiss.swift; sourceTree = "<group>"; };
+		F57230D32C3D567E0009C512 /* TicTacToe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicTacToe.swift; sourceTree = "<group>"; };
 		F58E28232C0E711100FACC1A /* Timeline.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Timeline.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F58E28262C0E711100FACC1A /* TimelineApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineApp.swift; sourceTree = "<group>"; };
 		F58E282A2C0E711200FACC1A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -54,6 +60,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F57230CE2C3D53420009C512 /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				F57230CF2C3D53630009C512 /* ScrollCard.swift */,
+				F5BA4B1B2C2AAC0D00FEA041 /* Parallax.swift */,
+				F57230D12C3D54F30009C512 /* Dismiss.swift */,
+			);
+			path = Component;
+			sourceTree = "<group>";
+		};
 		F58E281A2C0E711100FACC1A = {
 			isa = PBXGroup;
 			children = (
@@ -106,9 +122,9 @@
 			isa = PBXGroup;
 			children = (
 				F5BA4B1D2C2ACA5800FEA041 /* Timelines.swift */,
-				F5BA4B1B2C2AAC0D00FEA041 /* Parallax.swift */,
 				F5C92A8A2C2B086F00F556DA /* Networks */,
 				F5C92A8B2C2B095100F556DA /* Miniapps */,
+				F57230CE2C3D53420009C512 /* Component */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -136,6 +152,7 @@
 			children = (
 				F5C92A922C2B1BF500F556DA /* Miniapps.swift */,
 				F5C92A8E2C2B198B00F556DA /* Calculator.swift */,
+				F57230D32C3D567E0009C512 /* TicTacToe.swift */,
 			);
 			path = Miniapps;
 			sourceTree = "<group>";
@@ -213,11 +230,14 @@
 				F5BA4B242C2AD40B00FEA041 /* E+UI.swift in Sources */,
 				F5BA4B202C2ACAA500FEA041 /* Timeline.swift in Sources */,
 				F5BA4B222C2AD12400FEA041 /* Symbol.swift in Sources */,
+				F57230D22C3D54F30009C512 /* Dismiss.swift in Sources */,
 				F5C92A852C2AFE5B00F556DA /* Store.swift in Sources */,
+				F57230D02C3D53630009C512 /* ScrollCard.swift in Sources */,
 				F5BA4B1E2C2ACA5800FEA041 /* Timelines.swift in Sources */,
 				F5C92A8F2C2B198B00F556DA /* Calculator.swift in Sources */,
 				F5C92A892C2B00C500F556DA /* Network.swift in Sources */,
 				F5BA4B1C2C2AAC0D00FEA041 /* Parallax.swift in Sources */,
+				F57230D42C3D567F0009C512 /* TicTacToe.swift in Sources */,
 				F5C92A872C2AFF2100F556DA /* Jokes.swift in Sources */,
 				F5BA4B262C2ADF9100FEA041 /* Networks.swift in Sources */,
 				F5C92A912C2B19B100F556DA /* Miniapp.swift in Sources */,

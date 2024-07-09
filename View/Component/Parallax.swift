@@ -3,7 +3,6 @@
 import SwiftUI
 
 struct Parallax: View {
-    @Environment(\.dismiss) private var dismiss
     let symbol: Symbol
     @State private var profile: Bool = false
     var body: some View {
@@ -39,30 +38,13 @@ struct Parallax: View {
                 .offset(y: minY > 0 ? -minY : 0)
         }
         .frame(height: 250)
-        .overlay(alignment: .topLeading) {
-            if symbol.back {
-                Button { dismiss() } label: {
-                    HStack {
-                        Image(systemName: "chevron.left")
-                            .font(.system(size: 15, weight: .heavy))
-                        
-                        Text("back")
-                            .font(.system(size: 18, weight: .bold ,design: .rounded))
-                    }
-                    .padding(8)
-                    .background(.regularMaterial, in: .capsule)
-                    .foregroundStyle(.blue)
-                }
-                .padding(.leading, 7)
-            }
-        }
         .sheet(isPresented: $profile) {
-            VStack(alignment: .center, spacing: 15) {
+            VStack(alignment: .center, spacing: 25) {
                 Text("Владислав Лысенко")
                     .font(.system(size: 20, weight: .bold, design: .rounded))
                     .foregroundStyle(.company)
                     .frame(maxWidth: .infinity, alignment: .center)
-                    .padding(.bottom, 30)
+                
                 HStack(spacing: 30) {
                     LinkRow(link: "mailto:vlad.lysenka@icloud.com", symbol: "envelope.fill")
                     
@@ -76,6 +58,15 @@ struct Parallax: View {
                     LinkRow(link: "https://t.me/vladlysenka", symbol: "paperplane")
                 }
                 .padding(.horizontal)
+                
+                HStack {
+                    Image(.iconlune)
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: 45, height: 45)
+                        .clipShape(.rect(cornerRadius: 12))
+                }
+                .padding(.top)
             }
             .padding(15)
             .presentationDetents([.height(250)])

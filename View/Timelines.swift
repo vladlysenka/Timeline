@@ -7,9 +7,7 @@ struct Timelines: View {
     @State private var miniapp: Bool = false
     var body: some View {
         NavigationStack {
-            ScrollView {
-                Parallax(symbol: .timeline)
-                
+            ScrollCard(symbol: .timeline) {
                 HStack {
                     TimeImage(.network) { network.toggle() }
                     
@@ -24,7 +22,6 @@ struct Timelines: View {
                 }
                 .padding()
             }
-            .scrollIndicators(.hidden)
             .navigationDestination(isPresented: $network) { Networks() }
             .navigationDestination(isPresented: $miniapp) { Miniapps() }
         }

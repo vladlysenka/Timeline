@@ -1,4 +1,4 @@
-// Created by Vlad Lysenka 25.06.2024 
+// Created by Vlad Lysenka 25.06.2024
 
 import SwiftUI
 

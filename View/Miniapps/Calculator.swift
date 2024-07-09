@@ -38,19 +38,7 @@ struct Calculator: View {
         }
         .padding(.bottom)
         .overlay(alignment: .topLeading) {
-            Button { dismiss() } label: {
-                HStack {
-                    Image(systemName: "chevron.left")
-                        .font(.system(size: 15, weight: .heavy))
-                    
-                    Text("back")
-                        .font(.system(size: 18, weight: .bold ,design: .rounded))
-                }
-                .padding(8)
-                .background(.regularMaterial, in: .capsule)
-                .foregroundStyle(.blue)
-            }
-            .padding(.leading, 7)
+            Dismiss()
         }
     }
 }

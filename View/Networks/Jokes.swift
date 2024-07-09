@@ -3,6 +3,7 @@
 import SwiftUI
 
 struct Jokes: View {
+    @Environment(\.dismiss) private var dismiss
     @Environment(Store.self) private var store
     var body: some View {
         List {
@@ -40,9 +41,12 @@ struct Jokes: View {
         }
         .listStyle(.plain)
         .scrollIndicators(.hidden)
+        .overlay(alignment: .topLeading) {
+            Dismiss()
+        }
         .safeAreaInset(edge: .bottom) {
             VStack {
-                Text(!store.text.isEmpty ? store.text : "Нажми кнопку чтобы появилась шутка от Чака Норриса")
+                Text(!store.text.isEmpty ? store.text : "Нажми на кнопку чтобы появилась шутка от Чака Норриса")
                     .font(.system(size: 16, weight: .bold, design: .rounded))
                     .foregroundStyle(.company)
                     .frame(maxWidth: .infinity, alignment: .leading)

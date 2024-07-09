@@ -11,6 +11,7 @@ enum Symbol: String {
     // MARK: Miniapp
     case miniapp    = "applelogo"
     case calculator = "plus.forwardslash.minus"
+    case tictactoe  = "xmark.circle"
     
     
     var title: String {
@@ -21,6 +22,7 @@ enum Symbol: String {
         // MARK: Miniapp
         case .miniapp    : "Miniapp"
         case .calculator : "Calculator"
+        case .tictactoe  : "Крестики нолики"
         default          : "Timeline"
         }
     }
@@ -31,6 +33,7 @@ enum Symbol: String {
         case .joke       : "Генератор случайных шуток от Чака Норриса, который работает с сетью для получения данных."
         // MARK: Miniapp
         case .calculator : "Классический калькулятор apple"
+        case .tictactoe  : "Игра в крестики нолики"
         default          : ""
         }
     }

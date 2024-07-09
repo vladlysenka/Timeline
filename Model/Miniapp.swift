@@ -7,6 +7,7 @@ struct Miniapp: Identifiable {
     var symbol: Symbol
     
     static var data: [Miniapp] = [
+        Miniapp(id: 1, symbol: .tictactoe),
         Miniapp(id: 0, symbol: .calculator)
     ]
 }

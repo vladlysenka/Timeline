@@ -5,11 +5,9 @@ import SwiftUI
 struct Miniapps: View {
     let columns = Array(repeating: GridItem(.flexible(), spacing: 10), count: 1)
     var body: some View {
-            ScrollView {
-                Parallax(symbol: .miniapp)
-                
-                VStackNetwork
-            }
+        ScrollCard(symbol: .miniapp) {
+            VStackNetwork
+        }
     }
     
     var VStackNetwork: some View {
