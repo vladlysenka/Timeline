@@ -10,9 +10,8 @@ struct Dismiss: View {
                 Image(systemName: "chevron.left")
                     .font(.system(size: 15, weight: .bold))
                 
-                Text("назад")
+                Text("Назад")
                     .font(.system(size: 18, weight: .semibold ,design: .rounded))
-                    .padding(.bottom, 2)
             }
             .frame(height: 40)
             .padding(.horizontal, 8)

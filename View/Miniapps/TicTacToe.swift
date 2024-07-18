@@ -7,9 +7,9 @@ struct TicTacToe: View {
     @State private var currentPlayer = "X"
     @State private var gameOver = false
     @State private var message = ""
-    @State private var scoreX = 0
-    @State private var scoreO = 0
-
+    @AppStorage("score_x") private var scoreX = 0
+    @AppStorage("score_o") private var scoreO = 0
+    
     let winningCombinations = [
         [0, 1, 2],
         [3, 4, 5],
@@ -20,61 +20,92 @@ struct TicTacToe: View {
         [0, 4, 8],
         [2, 4, 6]
     ]
+    
+    let columns = Array(repeating: GridItem(spacing: 15), count: 3)
+    
     var body: some View {
-        VStack {
-            Text("Tic Tac Toe")
-                .font(.largeTitle)
-                .padding()
-
-            Text("Player \(currentPlayer)'s turn")
-                .font(.title)
-                .padding()
-            
-            LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 3), spacing: 15) {
-                ForEach(0..<9) { index in
-                    ZStack {
-                        Rectangle()
-                            .foregroundColor(.blue)
-                            .frame(width: 100, height: 100)
-                            .cornerRadius(10)
-                        
-                        Text(board[index])
-                            .font(.largeTitle)
-                            .foregroundColor(.white)
+        VStack(spacing: 25) {
+            HStack {
+                Text("Tic Tac Toe")
+                    .font(.system(size: 35, weight: .bold, design: .rounded))
+                    .foregroundStyle(.gray)
+                
+                Spacer()
+                
+                Menu {
+                    Button("Сбросить счетчик", systemImage: "delete.left") {
+                        scoreX = 0
+                        scoreO = 0
                     }
-                    .onTapGesture {
-                        playerTap(index)
-                    }
+                } label: {
+                    Image(systemName: "ellipsis.circle")
+                        .font(.title2)
                 }
             }
-            .padding()
             
-            if gameOver {
-                Text(message)
-                    .font(.title)
-                    .padding()
-                
-                Button("Restart") {
-                    resetGame()
+            Text("Ход  **\(currentPlayer)**")
+                .font(.system(size: 25, design: .rounded))
+            
+            LazyVGrid(columns: columns, spacing: 15) {
+                ForEach(0..<9) { index in
+                    RoundedRectangle(cornerRadius: 20)
+                        .foregroundStyle(.ultraThinMaterial)
+                        .frame(height: 100)
+                        .background(board[index] == "" ? .green : board[index] == "X" ? .red : .blue, in: .rect(cornerRadius: 20).stroke(lineWidth: 1))
+                        .overlay {
+                            Text(board[index])
+                                .font(.system(size: 50, weight: .semibold, design: .rounded))
+                                .foregroundStyle(board[index] == "X" ? .red : .blue)
+                        }
+                        .onTapGesture {
+                            playerTap(index)
+                        }
                 }
-                .padding()
             }
             
             HStack {
-                Text("Score X: \(scoreX)")
+                Score(title: "X", value: scoreX, color: .red)
+                
                 Spacer()
-                Text("Score O: \(scoreO)")
+                
+                Score(title: "O", value: scoreO, color: .blue, true)
             }
-            .padding()
         }
         .padding()
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .alert(message, isPresented: $gameOver) {
+            Button("Рестарт") {
+                resetGame()
+            }
+        }
+        .overlay(alignment: .topLeading) {
+            Dismiss()
+        }
     }
-
+    
+    @ViewBuilder func Score(title: String, value: Int, color: Color, _ isAngel: Bool = false) -> some View {
+        HStack(spacing: 15) {
+            Text(title)
+                .font(.system(size: 18, weight: .bold, design: .rounded))
+                .foregroundStyle(color)
+            
+            Divider()
+            
+            Text("\(value)")
+                .font(.system(size: 18, weight: .semibold, design: .rounded))
+                .rotationEffect(.degrees(isAngel ? 180 : 0))
+        }
+        .frame(height: 40)
+        .padding(.horizontal)
+        .background(.ultraThinMaterial, in: .rect(cornerRadius: 16))
+        .rotationEffect(.degrees(isAngel ? 180 : 0))
+    }
+    
     private func playerTap(_ index: Int) {
         if board[index] == "" && !gameOver {
             board[index] = currentPlayer
             if checkWin() {
-                message = "\(currentPlayer) Wins!"
+                message = "\(currentPlayer) Выиграли!"
                 gameOver = true
                 if currentPlayer == "X" {
                     scoreX += 1
@@ -84,23 +115,23 @@ struct TicTacToe: View {
             } else if board.contains("") {
                 currentPlayer = currentPlayer == "X" ? "O" : "X"
             } else {
-                message = "It's a Draw!"
+                message = "Ничья"
                 gameOver = true
             }
         }
     }
-
+    
     private func checkWin() -> Bool {
         for combination in winningCombinations {
             if board[combination[0]] == currentPlayer &&
-                board[combination[1]] == currentPlayer &&
-                board[combination[2]] == currentPlayer {
-                return true
+               board[combination[1]] == currentPlayer &&
+               board[combination[2]] == currentPlayer {
+               return true
             }
         }
         return false
     }
-
+    
     private func resetGame() {
         board = Array(repeating: "", count: 9)
         currentPlayer = "X"
