@@ -24,7 +24,7 @@ struct TicTacToe: View {
     let columns = Array(repeating: GridItem(spacing: 15), count: 3)
     
     var body: some View {
-        VStack(spacing: 25) {
+        VStack(spacing: 30) {
             HStack {
                 Text("Tic Tac Toe")
                     .font(.system(size: 35, weight: .bold, design: .rounded))
@@ -38,13 +38,25 @@ struct TicTacToe: View {
                         scoreO = 0
                     }
                 } label: {
-                    Image(systemName: "ellipsis.circle")
-                        .font(.title2)
+                    Image(systemName: "line.horizontal.3.decrease.circle")
+                        .font(.system(size: 20))
                 }
             }
             
-            Text("Ход  **\(currentPlayer)**")
+            HStack {
+                Score(title: "X", value: scoreX, color: .red)
+                
+                HStack {
+                    Text("Ход")
+                    
+                    Text("**\(currentPlayer)**")
+                        .foregroundStyle(currentPlayer == "X" ? .red : .blue)
+                }
                 .font(.system(size: 25, design: .rounded))
+                .frame(maxWidth: .infinity)
+                
+                Score(title: "O", value: scoreO, color: .blue, true)
+            }
             
             LazyVGrid(columns: columns, spacing: 15) {
                 ForEach(0..<9) { index in
@@ -63,13 +75,7 @@ struct TicTacToe: View {
                 }
             }
             
-            HStack {
-                Score(title: "X", value: scoreX, color: .red)
-                
-                Spacer()
-                
-                Score(title: "O", value: scoreO, color: .blue, true)
-            }
+
         }
         .padding()
         .frame(maxWidth: .infinity, maxHeight: .infinity)
