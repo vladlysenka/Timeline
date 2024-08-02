@@ -10,7 +10,7 @@ struct Dismiss: View {
         } label: {
             Image(systemName: "chevron.left")
                 .font(.system(size: 15, weight: .bold))
-                .padding(10)
+                .padding(12)
                 .background(.regularMaterial, in: .circle)
                 .foregroundStyle(.blue)
         }

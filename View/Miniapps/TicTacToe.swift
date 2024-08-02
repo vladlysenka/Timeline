@@ -28,7 +28,6 @@ struct TicTacToe: View {
             HStack {
                 Text("Tic Tac Toe")
                     .font(.system(size: 35, weight: .bold, design: .rounded))
-                    .foregroundStyle(.gray)
                 
                 Spacer()
                 

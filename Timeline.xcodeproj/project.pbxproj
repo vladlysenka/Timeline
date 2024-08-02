@@ -94,9 +94,9 @@
 		F58E28342C0E719A00FACC1A /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				F5BA4B1F2C2ACAA500FEA041 /* Timeline.swift */,
 				F5C92A882C2B00C500F556DA /* Network.swift */,
 				F5C92A902C2B19B100F556DA /* Miniapp.swift */,
-				F5BA4B1F2C2ACAA500FEA041 /* Timeline.swift */,
 				F5C92A842C2AFE5B00F556DA /* Store.swift */,
 			);
 			path = Model;
